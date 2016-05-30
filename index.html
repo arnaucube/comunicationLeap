@@ -1,0 +1,242 @@
+<html>
+<head>
+<title>ABB Room selector</title>
+<style>
+	html, body { /* sense marges ni padding */
+		margin: 0;
+		padding: 0;
+	    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	    font-size: 14px;
+	    height: 100%;
+	    width: 100%;
+		overflow: hidden;
+
+		background: #a8caba;
+		background: -moz-linear-gradient(-45deg, #a8caba 0%, #5d4157 100%);
+		background: -webkit-linear-gradient(-45deg, #a8caba 0%,#5d4157 100%);
+		background: linear-gradient(135deg, #a8caba 0%,#5d4157 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a8caba', endColorstr='#5d4157',GradientType=1 );
+	}
+
+	#chat{
+
+	}
+	#nickWrap{
+		display: none;
+	}
+	#contentWrap{
+	}
+	#chatWrap{
+		float:left;
+		border:1px #000 solid;
+		border-radius: 5px;
+	}
+
+	.loginbox{
+		background: -moz-linear-gradient(top, rgba(96,118,132,0.1) 0%, rgba(96,118,132,0.42) 100%);
+		background: -webkit-linear-gradient(top, rgba(96,118,132,0.1) 0%,rgba(96,118,132,0.42) 100%);
+		background: linear-gradient(to bottom, rgba(96,118,132,0.1) 0%,rgba(96,118,132,0.42) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a607684', endColorstr='#6b607684',GradientType=0 );
+
+
+		/*position: absolute;*/
+		max-width: 200px;
+		margin-top: 10%;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 10px;
+		/*border-radius: 5px;*/
+
+		animation-name: loginboxanimation;
+		animation-duration: 0.7s;
+		animation-iteration-count: 1;
+	}
+	@keyframes toppannelanimation {
+	    0%   {margin-top:-100%;}
+	    100% {margin-top:0%;}
+	}
+	.loginbox input[type=text] {
+		width: 100px;
+		background: rgba(255,255,255,0.6);
+		border: 0px;
+		/*border-radius: 3px;*/
+		margin-top: 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.loginbox input[type=text]:focus {
+    /*border-color:#333;*/
+		background: rgba(255,255,255,1);
+	}
+
+	.loginbox input[type=submit] {
+    padding:5px 15px;
+    background: #1D6BAA;
+		color: #ffffff;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+		margin-top: 10px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.chat{
+		background: rgba(240,240,240,0.4);
+		height:500px;
+		padding: 10px;
+		border-radius: 5px;
+	}
+	.users2{
+		/*margin-left: 60%;*/
+		padding: 10px;
+		max-width: 150px;
+		border-radius: 5px;
+		background: rgba(240,240,240,0.4);
+		display: none; /*block;*/
+	}
+	.userStations{
+		/*margin-left: 60%;*/
+		padding: 10px;
+		max-width: 150px;
+		border-radius: 5px;
+		background: rgba(240,240,240,0.4);
+		display: none; /*block;*/
+	}
+	.usersUnity{
+		/*margin-left: 60%;*/
+		padding: 10px;
+		max-width: 150px;
+		border-radius: 5px;
+		background: rgba(240,240,240,0.4);
+		display: block;
+	}
+	.RSrooms{
+		/*margin-left: 60%;*/
+		padding: 10px;
+		max-width: 150px;
+		border-radius: 5px;
+		background: rgba(240,240,240,0.4);
+		display: none; /*block;*/
+	}
+	.nom{
+		background: #ffffff;
+		color: #000000;
+		width: 100px;
+		height: 25px;
+		margin: 5px;
+		display: block;
+		border-radius: 5px;
+		text-align: center;
+		font-weight: bold;
+	}
+
+	.logobox{
+		width: 90%;
+		height: 115px;
+		margin-left: auto;
+		margin-right: auto;
+		display:block;
+		background: rgba(240,240,240,0.2);
+
+		animation-name: toppannelanimation;
+		animation-duration: 0.7s;
+		animation-iteration-count: 1;
+	}
+	.globalbox{
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.rightpannels{
+		background: rgba(240,240,240,0.1);
+		/*height:500px;*/
+		width: 40%;
+		padding: 10px;
+		border-radius: 5px;
+		display: inline-block;
+		margin-top: 0px;
+		position: absolute;
+	}
+	.systeminfo{
+		background: rgba(240,240,240,0.4);
+		/*height:500px;*/
+		width: 40%;
+		padding: 10px;
+		border-radius: 5px;
+		top: 0px;
+		display: inline-block;
+		position: relative;
+	}
+	.Room{
+		padding: 10px;
+		width: 30%;
+		max-width: 150px;
+		border-radius: 5px;
+		background: rgba(240,240,240,0.4);
+		border: 2px solid #5E5E5E;
+	}
+	.Robotstudio_User{
+		background: #D3E5D3;
+		color: #000000;
+		width: 100px;
+		height: 25px;
+		margin: 5px;
+		display: block;
+		border-radius: 5px;
+		text-align: center;
+		font-weight: bold;
+	}
+	.Unity_User{
+		background: #CED4E5;
+		color: #000000;
+		width: 100px;
+		height: 25px;
+		margin: 5px;
+		display: block;
+		border-radius: 5px;
+		text-align: center;
+		font-weight: bold;
+	}
+</style>
+</head>
+<body onload='OnLoadHTML()'>
+	<div id="nickWrap" class='loginbox'>
+		<img src="http://s18.postimg.org/d0ldvx4rd/abblogo.png" style="width:90%; margin-left:5%;"/>
+		<p>Enter a username:</p>
+		<p id="nickError"></p>
+		<form id="setNick">
+			<input type="text" size ="35" id="nickname"></input>
+			<input type ="submit"></input>
+		</form>
+	</div>
+
+	<div id="contentWrap">
+		<!--<div id="chatWrap">
+			<div id="chat" class="chat"></div>
+			<form id="send-message">
+				<input size="35" id="message"></input>
+				<input type="submit"></input>
+			</form>
+		</div>-->
+		<div class="logobox">
+			<img src="http://s18.postimg.org/d0ldvx4rd/abblogo.png" style="height:100%;"/>
+		</div>
+		<div class="globalbox">
+			<div id='systeminfo' class='systeminfo'></div>
+			<div class="rightpannels">
+				<div id="users2" class='users2'></div>
+				<div id="usersStations" class="userStations"></div>
+				<div id="usersUnity" class="usersUnity"></div>
+				<div id="RSrooms" class="RSrooms"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="functions.js"></script>
+</body>
+</html> '
